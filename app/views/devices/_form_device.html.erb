@@ -1,0 +1,47 @@
+<%= form_for @device, remote: true do |f| %>
+  <div id="error">
+  </div>
+   <div class="input-field col s6">
+    <%= f.label t "device_manager.field_label.device_status" %>
+    <% if @device.device_status_id == Settings.device_status.using %>
+      <%= hidden_field_tag :device_status_id, @device.device_status_id %>
+      <%= f.label @device.device_status.name ,{class: "form-control"}%>
+    <% else %>
+      <%= f.collection_select :device_status_id, @device_status,:id,:name, {},
+        {class: "form-control"} %>
+    <% end %>
+
+  </div>
+  <div class="input-field col s6">
+    <%= f.label t "device_manager.field_label.device_category" %>
+    <%= f.collection_select :device_category_id, @device_categories, :id, :name,
+      {}, {class: "chosen-select form-control device-category", onchange: "getDeviceCode('" + device_code_show_path + "')"} %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label t "device_manager.field_label.invoice" %>
+    <%= f.collection_select :invoice_id, @device_invoices, :id, :invoice_number,
+      {}, {class: "chosen-select form-control"} %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :device_code %>
+    <%= f.text_field :device_code, class: "form-control device-code" %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :production_name %>
+    <%= f.text_field :production_name, class: "form-control" %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :model_number %>
+    <%= f.text_field :model_number, class: "form-control" %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :serial_number %>
+    <%= f.text_field :serial_number, class: "form-control" %>
+  </div>
+  <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "device_manager.button_close_text" %></button>
+        <button type="submit" class="btn btn-primary">
+          <%= t "device_manager.button_submit_text.save_change" %></button>
+   </div>
+<% end %>

@@ -1,0 +1,6 @@
+<% if @assignment.errors.any? %>
+  $('#error').html('<%= j render  "shared/error_messages", object: @assignment %>')
+<% else %>
+  $('#dms-popup').modal('toggle');
+  $('#form-submit').submit();
+<% end %>

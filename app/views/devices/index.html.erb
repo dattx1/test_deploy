@@ -1,0 +1,50 @@
+<% provide :title, t("device_manager.title") %>
+<h1></h1>
+<div class="row">
+  <%= form_tag("", id: "form-submit", method: :get) do %>
+  <div class="row">
+    <div class="col-lg-2 text-right">
+      <%= t "device_manager.field_label.device_status" %>
+    </div>
+    <div class="col-lg-10">
+      <%= select_tag( :status_id, options_for_select(@device_status
+        .collect{ |device_status| [device_status.name, device_status.id]},
+        params[:status_id]), include_blank: Settings.all,
+        class: "chosen-select", onChange: "changeSearchForm()") %>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-lg-2 text-right">
+      <%= t "device_manager.field_label.device_category" %>
+    </div>
+    <div class="col-lg-10">
+      <%= select_tag( :category_id, options_for_select(@device_categories
+        .collect{ |device_category| [device_category.name, device_category.id]},
+        params[:category_id]), include_blank: Settings.all,
+        class: "chosen-select", onChange: "changeSearchForm()") %>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-lg-2 text-right">
+      <%= t "device_manager.field_label.invoice" %>
+    </div>
+    <div class="col-lg-10">
+      <%= select_tag( :invoice_number, options_for_select(@device_invoices
+        .collect{ |invoice| [invoice.invoice_number, invoice.id]},
+        params[:invoice_number]), include_blank: Settings.all,
+        class: "chosen-select", onChange: "changeSearchForm()") %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<br/>
+<div class="row" style="margin-left: 0">
+  <%= link_to t("device_manager.title_add_new"),  new_device_path,class: "btn btn-primary",
+    remote: true, data: { toggle: "modal", target: "#dms-popup", backdrop: "static" } %>
+</div>
+<br/>
+<div id="grid-device">
+  <%= render "grid_device" %>
+</div>

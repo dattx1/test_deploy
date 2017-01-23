@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-2"><% t "device_manager.field_label.device_code" %></div>
+  <div class="col-md-3"><%= @device.device_code %></div>
+  <div class="col-md-2">
+    <% t "device_manager.field_label.production_name" %></div>
+  <div class="col-md-5"><%= @device.production_name %></div>
+</div>
+<div class="row">
+  <div class="col-md-2"><% t "device_manager.field_label.model" %></div>
+  <div class="col-md-3"><%= @device.model_number %></div>
+  <div class="col-md-2"><% t "device_manager.field_label.seria_number" %></div>
+  <div class="col-md-5"><%= @device.serial_number %></div>
+</div>
+<div class="row">
+  <div class="col-md-2"><% t "device_manager.field_label.device_status" %></div>
+  <div class="col-md-3"><%= @device.device_status.name %></div>
+  <div class="col-md-2">
+    <% t "device_manager.field_label.device_category" %></div>
+  <div class="col-md-5"><%= @device.device_category.name %></div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <% t "device_manager.field_label.invoice_number" %></div>
+  <div class="col-md-3"><%= @device.invoice.invoice_number %></div>
+  <div class="col-md-2"><% t "device_manager.field_label.createed_by" %></div>
+</div>
+

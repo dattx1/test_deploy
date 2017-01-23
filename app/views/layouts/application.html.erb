@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
+    <title><%= full_title yield :title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application",
+      "data-turbolinks-track": "reload" %>
+    <%= render "layouts/shim" %>
+  </head>
+  <body class="nav-md">
+   <div class="container body col-lg-12">
+      <div class="main_container">
+        <div class="col-lg-3 left_col" >
+          <%= render "layouts/left_menu" %>
+        </div>
+        <%= render "layouts/header" %>
+        <div class="col-lg-9 right_col ">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag :div, message,
+              class: "alert alert-#{message_type}" %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+ <!--   <%=debug(params) if Rails.env.development? %> -->
+<div class="modal fade" id="dms-popup" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="header"></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+</html>

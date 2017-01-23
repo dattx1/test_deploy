@@ -1,0 +1,2 @@
+class DmsObject < ApplicationRecord
+end

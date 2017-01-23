@@ -1,0 +1,30 @@
+image_size_index: 50
+max_length_name: 128
+max_length_email: 255
+min_length_password: 6
+remember: "1"
+department:
+  division_1: 1
+  division_2: 2
+  division_3: 3
+  back_officer: 4
+  human_resource: 5
+  internal_comunicator: 6
+  education: 7
+
+device_status:
+  using: 1
+  available: 2
+  broken: 3
+request_status:
+  waiting_approve: 1
+  approved: 2
+  canceled: 3
+  done: 4
+admin_role: 1
+manager_role: 2
+staff: 3
+all : "All"
+
+device_code:
+  max_length: 4

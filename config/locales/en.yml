@@ -1,0 +1,151 @@
+en:
+  title: "Devises manager system"
+  dms_app_title: "Device Manage Systems"
+  button_update_text: "Update"
+  user:
+    not_activated: "Account not activated. Check your email for the activation link."
+    forgot_password: "Forgot password"
+    require_logged: "Please log in."
+    max_image_size: "should be less than 5MB"
+  session:
+    invalid_user: "Account is not actived or not exits"
+    invalid_login: "Invalid email/password combination"
+    remember_account: "Remember me on this computer"
+    title: "Log in"
+    login: "Log in"
+    new_user: "New user?"
+    signup: "Sign up now!"
+    log_out: "Log out"
+  home:
+    title: "Home"
+    signup_title: "Sign up now!"
+    content: "Device Manage Systems!"
+  help:
+    title: "Help"
+  header:
+    dms_app: "Device Manage Systems"
+    users: "Users"
+    profile: "Profile"
+    settings: "Settings"
+    login: "Log in"
+    remember_account: "Remember me"
+    placeholder:
+      email: "Please enter email"
+      password: "Plase enter password"
+      remember_account: "Remember me on this computer"
+    full_screen: "Full Screen"
+    lock: "Lock"
+  about:
+    title: "About"
+    framgia: "We make it anwsome"
+  menu:
+    hone: "Home"
+    admin: "Admin"
+    manager_user: "Manager User"
+    show_user: "Show Users"
+    create_user: "Create User"
+    reset_password: "Reset Password"
+    manager_department: "Manager Department"
+    show_deparment: "Departments"
+    create_department: "New Department"
+    manager_request: "Manager Request"
+    create_request: "New Request"
+    update_request: "Update Request"
+    search_request: "Search"
+    client: "Client"
+    welcome: "Welcome,"
+    general: "General"
+  nav:
+    user_profile: "Profile"
+    logout: "Log out"
+  device_manager:
+    title: "Device Manager"
+    new:
+      title: "Create New Device"
+    button_submit_text:
+      edit: "Update"
+      new: "Add New"
+      save_change: "Save changes"
+    button_close_text: "Close"
+    title_add_new: "Add New Device"
+    delete_action:
+      success: "Delete Device Sucess!"
+      fail: "Delete Device Failed!"
+    message_delete_confirm: "Do you want to delete %{device}"
+    message_device_not_exist: "Device not found"
+    field_label:
+      device_status: "Device Status"
+      device_category: "Device Categories"
+      invoice: "Invoice Number"
+      device_code: "Device Code"
+      production_name: "Production Name"
+      seria_number: "Seria Number"
+      device_category: "Device Category"
+      model: "Model Number"
+      device_status: "Device Status"
+      invoice_number: "Invoice Number"
+      createed_by: "Created By"
+    table:
+      header:
+        production: "Production"
+        model: "Model"
+        status: "Status"
+        category: "Category"
+        invoice_number: "Invoice Number"
+        action: "Action"
+    action_message:
+      create_fail: "Create Failed!"
+      update_success: "Update Success!"
+      update_fail: "Update Failed!"
+  errors:
+    first: "Errors:"
+  request:
+    title: "Manager Requests"
+    table:
+      title: "Title"
+      description: "Description"
+      request_type: "Request Type"
+      request_status: "Request Status"
+      assignee: "Assign to"
+      created_by": "Create By"
+      updated_by: "Updated By"
+  action_message:
+    create_success: "Create Success!"
+    create_fail: "Create Failed!"
+    update_success: "Update Success!"
+    update_fail: "Update Failed!"
+  action:
+    close: "Close"
+    edit: "Update"
+    save: "Save Changes"
+    new: "Add New"
+  request_manager:
+    title_add_new: "Add New Request"
+    not_exist: "Request is not exists"
+    search:
+      relative_to: "Relative To"
+      request_type: "Request Type"
+      request_status: "Request Status"
+  assignment:
+    label:
+      request_title: "Request Title"
+      process_by: "Process By"
+      assignee: "Staff"
+      description: "Description"
+      request: "Request"
+      add_new_device: "Add New Device"
+      edit_assign_device: "Edit Assign Device"
+      create_ticket_by: "Created Ticket By"
+      staff_name: "Staff Name"
+      created_by: "Created By"
+      created_date: "Created Date"
+      action: "Action Date"
+    table:
+      column_header:
+        device_category: "Device Category"
+        device: "Device"
+        group_device: "Group Device"
+    message:
+      device_duplicate: "Assignment details device must exist"
+      assignee_not_exist: "Assignment ticket not exist"
+      assignment_detail_duplicate: "Assignment Details Is Duplicate"

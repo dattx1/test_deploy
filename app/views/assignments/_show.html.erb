@@ -1,0 +1,46 @@
+<%= form_for @assignment do |f| %>
+  <div id="error">
+  </div>
+  <div class="input-field col s6">
+    <%= f.label t "assignment.label.request_title" %>
+    <%= f.label @assignment.request.title ,{class: "form-control"}%>
+  </div>
+  <br/>
+  <div class="input-field col s6">
+    <%= f.label t "assignment.label.process_by" %>
+     <%= f.label @support.created_by(@assignment.created_by) ,{class: "form-control"}%>
+  </div>
+  <br/>
+  <div class="input-field col s6">
+    <%= f.label t "assignment.label.assignee" %>
+    <%= f.label @assignment.assignee.name, {class: "form-control"}%>
+  </div>
+  <br/>
+  <div class="input-field col s6">
+    <%= f.label t "assignment.label.description" %>
+    <label class="form-control" for="assignment_Example useradmin">
+      <%= @assignment.description %>
+    </label>
+  </div>
+  <br/>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= t "assignment.table.column_header.device_category" %></th>
+        <th><%= t "assignment.table.column_header.device" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @assignment.assignment_details.each do |detail| %>
+        <tr>
+          <td class="width-45"><%= detail.device.device_category.name %></td>
+          <td><%= detail.device.production_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+      <%= t "device_manager.button_close_text" %></button>
+  </div>
+<% end %>

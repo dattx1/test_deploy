@@ -1,0 +1,39 @@
+<% if @devices.any? %>
+    <table class="table table-hover" style="table-layout: fixed;">
+      <thead>
+        <tr>
+          <th><%= t "device_manager.table.header.production" %></th>
+          <th><%= t "device_manager.table.header.model" %></th>
+          <th><%= t "device_manager.table.header.status" %></th>
+          <th><%= t "device_manager.table.header.category" %></th>
+          <th><%= t "device_manager.table.header.invoice_number" %></th>
+          <th><%= t "device_manager.table.header.action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @devices.each do |device| %>
+          <tr>
+            <td>
+              <%= link_to device.production_name, device_path(device) %>
+            </td>
+            <td><%= device.model_number %></td>
+            <td><%= device.device_status.name %></td>
+            <td><%= device.device_category.name %></td>
+            <td><%= device.invoice.invoice_number %></td>
+            <td>
+              <%= link_to "",  edit_device_path(device), remote: true,
+                class: "glyphicon glyphicon-pencil",
+                data: { toggle: "modal", target: "#dms-popup", backdrop: "static" } %>
+              <%= unless device.device_status_id == Settings.device_status.using
+                link_to "", device , method: :delete, remote: true,
+                  data: {confirm: t("device_manager.message_delete_confirm",
+                  device: device.production_name)},
+                  class: "glyphicon glyphicon-remove"
+              end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= will_paginate %>
+<% end %>

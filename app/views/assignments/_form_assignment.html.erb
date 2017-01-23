@@ -1,0 +1,71 @@
+<div class="modal-popup">
+  <%= form_for @asignment, remote: true do |f| %>
+    <div id="error">
+    </div>
+     <div class="input-field col s6">
+      <%= f.label t "assignment.label.request" %>
+      <%= f.label @request.title, class: "form-control"%>
+      <%= f.hidden_field :request_id%>
+    </div>
+    <div class="input-field col s6">
+      <%= f.label t "assignment.label.assignee" %>
+      <%= f.collection_select :assignee_id, @support.all_users,:id,:name,
+        {},{class: "chosen-select"} %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.label t "assignment.label.description" %>
+      <%= f.text_field :description, class: "form-control" , size: 20 %>
+    </div>
+    <br />
+    <div class="row padding-left-3">
+      <%= link_to t("assignment.label.add_new_device"),  assignment_device_show_path,
+      class: "btn btn-primary", remote: true %>
+    </div>
+    <br/>
+    <div id="tbl-assignment-detail">
+      <table id="assignment-detail" class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t "assignment.label.request" %></th>
+            <th><%= t "assignment.label.device_category" %></th>
+            <th><%= t "assignment.label.device" %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :assignment_details do |ff| %>
+              <tr>
+                <td class="width-30">
+                  <%= ff.collection_select :device_category_group_id,
+                    @support.device_group_categories,:id,:name, {},
+                    {class: "chosen-select device-group", id: "group_id_" +
+                    ff.options[:child_index].to_s, onChange: "assignmentDropChange('" +
+                    group_category_show_path + "',this,'device-caterory')"} %>
+                </td>
+                <td class="width-30">
+                   <%= ff.collection_select :device_category_id,
+                    @support.device_categories,:id,:name, {},
+                    {class: "chosen-select device-caterory", id: "device_category_id_" +
+                    ff.options[:child_index].to_s, onChange: "assignmentDropChange('" +
+                    device_assign_show_path + "',this,'device')"} %>
+                </td>
+                <td class="width-37">
+                <%= ff.collection_select :device_id, @support.device_can_assign,
+                  :id, :production_name, {},{class: "chosen-select device",
+                  id: "device_id_" + ff.options[:child_index].to_s} %>
+                </td>
+                <td class="padding-left-3 width-3">
+                </td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">
+        <%= t "device_manager.button_close_text" %></button>
+      <button type="button" class="btn btn-primary" onclick="submitForm()">
+        <%= t "device_manager.button_submit_text.save_change" %></button>
+    </div>
+  <% end %>
+</div>

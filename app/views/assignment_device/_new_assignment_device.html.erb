@@ -1,0 +1,26 @@
+ <tr>
+  <td>
+    <%= select_tag("", options_for_select(@support.device_group_categories
+      .collect{ |group| [group.name, group.id] }),
+      include_blank: Settings.all, class: "chosen-select device-group",
+      onChange: "assignmentDropChange('" + group_category_show_path +
+      "', this, 'device-caterory')") %>
+  </td>
+  <td>
+    <%= select_tag("", options_for_select(@support.device_categories
+      .collect{ |category| [category.name, category.id] }),
+      include_blank: Settings.all, class: "chosen-select device-caterory", onChange:
+      "assignmentDropChange('" + device_assign_show_path + "'
+      , this, 'device')") %>
+  </td>
+  <td>
+    <%= select_tag("", options_for_select(@support.device_can_assign
+      .collect{ |device| [device.production_name, device.id] }),
+      class: "device chosen-select") %>
+  </td>
+  <td class="width-3 padding-right-3">
+    <button type="button" class="close" onclick="removeAssignmentDevice(this)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </td>
+</tr>

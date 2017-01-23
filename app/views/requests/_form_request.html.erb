@@ -1,0 +1,42 @@
+<% if @request.readonly %>
+  <%= render "requests/form_request_readonly" %>
+<% else %>
+  <%= form_for @request, remote: true do |f| %>
+    <div id="error"></div>
+    <div class="input-field col s6">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+
+    <div class="input-field col s6">
+      <%= f.label t "request.table.request_type" %>
+      <%= f.collection_select :request_type_id, @request_types, :id, :name, {},
+        {class: "form-control"} %>
+    </div>
+
+    <div class="input-field col s6">
+      <%= f.label t "request.table.request_status" %>
+      <%= f.collection_select :request_status_id, @request_statuses, :id, :name,
+        {}, {class: "form-control"} %>
+    </div>
+
+    <div class="input-field col s6">
+      <%= f.label t "request.table.assignee" %>
+      <%= f.collection_select :assignee_id, @staffs, :id, :name, {},
+        {class: "form-control"} %>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">
+        <%= t "action.close" %>
+      </button>
+      <button type="submit" class="btn btn-primary">
+        <%= t "action.save" %>
+      </button>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,54 @@
+<%= form_tag("", id: "form-submit", method: :get) do %>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= t "assignment.label.create_ticket_by" %>
+    </div>
+    <div class="col-lg-12">
+      <%= select_tag(:created_by, options_for_select(@support.derpartment_user(Settings.department.back_officer)
+        .collect{ |user| [user.name, user.id]}, params[:created_by]), include_blank: Settings.all,
+        class: "form-control chosen-select", onChange: "changeSearchForm()") %>
+    </div>
+    <div class="col-lg-12">
+      <%= t "assignment.label.staff_name" %>
+    </div>
+    <div class="col-lg-12">
+      <%= select_tag( :assignee_id, options_for_select(@support.all_users
+        .collect{ |user| [user.name, user.id]}, params[:assignee_id]), include_blank: Settings.all,
+        class: "chosen-select", onChange: "changeSearchForm()") %>
+    </div>
+  </div>
+<% end %>
+<div id="grid-device">
+  <% if @assignments.any? %>
+    <table class="table table-hover" style="table-layout: fixed;">
+      <thead>
+        <tr>
+          <th><%= t "assignment.label.staff_name" %></th>
+          <th><%= t "assignment.label.request_title" %></th>
+          <th><%= t "assignment.label.created_by" %></th>
+          <th><%= t "assignment.label.created_date" %></th>
+          <th><%= t "assignment.label.action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @assignments.each do |assignment| %>
+          <tr>
+            <td>
+              <%= link_to assignment.assignee.name,  assignment_path(assignment),
+                remote: true, data: {toggle: "modal", target: "#dms-popup", backdrop: "static"} %>
+            </td>
+            <td><%= assignment.request.title %></td>
+            <td><%= @support.created_by(assignment.created_by) %></td>
+            <td><%= assignment.created_at %></td>
+            <td>
+              <%= link_to "",  edit_assignment_path(assignment), remote: true,
+                class: "glyphicon glyphicon-pencil",
+                data: {toggle: "modal", target: "#dms-popup"} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate %>
+  <% end %>
+</div>

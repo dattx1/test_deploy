@@ -1,0 +1,41 @@
+<% if @requests.any? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= t "request.table.title" %></th>
+        <th><%= t "request.table.description" %></th>
+        <th><%= t "request.table.request_type" %></th>
+        <th><%= t "request.table.request_status" %></th>
+        <th><%= t "request.table.assignee" %></th>
+        <th><%= t "request.table.created_by" %></th>
+        <th><%= t "request.table.updated_by" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= link_to request.title, request_path(request.id), remote: true,
+            data: {toggle: "modal", target: "#dms-popup"} %></td>
+          <td><%= request.description %></td>
+          <td><%= request.request_type.name %></td>
+          <td><%= request.request_status.name %></td>
+          <td><%= request.assignee.name if request.assignee.present? %></td>
+          <td><%= request.creater.name if request.creater.present? %></td>
+          <td><%= request.updater.name if request.updater.present? %></td>
+          <td>
+            <%= link_to "",  edit_request_path(request), remote: true,
+              class: "glyphicon glyphicon-pencil",
+              data: {toggle: "modal", target: "#dms-popup"} %>
+            <% if request.request_status_id == Settings.request_status.approved %>
+              <%= link_to "", new_assignment_path(request_id: request.id),
+                class: "glyphicon glyphicon-plus",
+                remote: true, data: {toggle: "modal", target: "#dms-popup",
+                backdrop: "static"} %>
+           <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @requests %>
+<% end %>

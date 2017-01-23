@@ -1,0 +1,176 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+/* Dialog */
+.custom-header-dialog {
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.custom-dialog {
+  border: 100px !important;
+  padding: 0px 5px 5px 5px !important;
+  border-radius: 5px 5px 5px 5px !important;
+  box-shadow: 0 0 10px #A1A1A1 !important;
+  max-width: 650px !important;
+  min-width: 285px !important;
+  font-family: Verdana !important;
+
+  input[type="button"], .custom-dialog .input-button {
+    border: 0 none;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 15px;
+    outline: none;
+    font-family: Verdana !important;
+  }
+
+/* Style for header bar of popup */
+  .ui-widget-header {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border-bottom: 1px solid #DFE1DC !important;
+    border-radius: 0 !important;
+    color: #F4644C !important;
+    font-family: Verdana, "clavo", serif !important;
+    font-size: 24px !important;
+    font-weight: normal !important;
+    height: 45px;
+    line-height: 50px;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  .ui-dialog-buttonset .ui-state-default {
+    border: 0 none !important;
+    border-radius: 3px 3px 3px 3px !important;
+    box-shadow: 0 2px 0 #C2C2C2 !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    padding: 8px 15px !important;
+    background-image: none !important;
+    background-color: #3aadda !important;
+  }
+
+  .ui-dialog-buttonset {
+    margin-top: 0 !important;
+    float: none !important;
+  }
+
+  .ui-button-text {
+    padding: 0 !important;
+  }
+
+  .ui-dialog-buttonpane button {
+    cursor: pointer;
+    margin: 0 0 0 10px !important;
+    padding: 6px 10px !important;
+    float: none !important;
+    min-width: 80px !important;
+    font-family: Verdana, "proxima-nova", sans-serif;
+
+    .ui-dialog-buttonpane button:hover {
+      /*background: #58595b !important;*/
+      color: #FFFFFF !important;
+    }
+  }
+
+  .ui-dialog-title {
+    margin: 0.1em 0px 0.1em 0 !important;
+    text-indent: 10px;
+  }
+
+  .ui-dialog-titlebar {
+    padding-left: 0px !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    cursor: default !important;
+  }
+
+  .ui-widget-header .ui-icon {
+    background-image: url(icon-popup-close.png);
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    height: 18px !important;
+    width: 18px !important;
+  }
+
+  .ui-dialog-titlebar-close {
+    background-image: url(icon-popup-close.png) !important;
+    background-repeat: no-repeat;
+    background-size: 18px auto !important;
+    border: 0 solid #FFFFFF !important;
+    height: 18px !important;
+    width: 18px !important;
+    border-radius: 0px !important;
+    top: 60% !important;
+
+    span {
+      display: none !important;
+      margin: 0 !important;
+    }
+
+    .ui-dialog-titlebar-close:hover {
+      border: 0px !important;
+      background-image: url(icon-popup-close.png);
+      background-repeat: no-repeat;
+      background-size: 18px auto;
+    }
+  }
+
+  .ui-dialog-buttonpane {
+    background: none repeat scroll 0 0 #EFECDD !important;
+    border-radius: 3px !important;
+    border-top: 0 none !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    width: 96% !important;
+  }
+
+  .ui-dialog-content{
+
+  }
+}
+
+#divDialog {
+  max-height: none !important;
+}
+
+.rightcontainer-bottommenu{
+  background: none repeat scroll 0 0 #efecdd;
+  border-radius: 5px 5px 5px 5px;
+  min-height: 60px;
+  line-height: 60px;
+  margin: 25px 0 10px;
+  text-align: center;
+}
+
+input[type="button"], .input-button, input[type="submit"], button{
+  border: 1px solid transparent;
+  border-radius: 3px 3px 3px 3px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 15px;
+  outline: none;
+  font-family: Verdana;
+  line-height: normal;
+  max-width: 100px
+}
+
+.taR{
+  text-align: right;
+}
+
+td{
+  max-width:1px;
+  text-overflow:ellipses;
+  overflow:hidden;
+  White-space:no-wrap
+}

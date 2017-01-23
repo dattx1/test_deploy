@@ -1,0 +1,6 @@
+<% if @request.errors.any? %>
+  $('#error').html('<%= j render  "shared/error_messages", object: @request %>')
+<% else %>
+  $('#dms-popup').modal('toggle');
+  $('#form-submit').submit();
+<% end %>

@@ -1,0 +1,103 @@
+<div class="left_col scroll-view">
+  <div class="navbar nav_title" style="border: 0;">
+    <%= link_to t("title"), root_path, class: "site_title" %>
+  </div>
+
+  <% if logged_in? %>
+    <div class="profile">
+      <div class="profile_pic">
+        <%= image_tag(current_user.avatar, class: "img-circle profile_img") %>
+      </div>
+      <div class="profile_info">
+        <span><%= t "menu.welcome" %></span>
+        <h2><%= current_user.name %></h2>
+      </div>
+    </div>
+  <% else %>
+    <div class="profile">
+      <div class="profile_pic">
+        <%= image_tag("user.png", id: "logo-icon",
+          class: "img-circle profile_img") %>
+      </div>
+      <div class="profile_info">
+        <span><%= t "menu.welcome" %></span>
+        <h2><%= t "menu.client" %></h2>
+      </div>
+    </div>
+  <% end %>
+  <div id="sidebar-menu" class=" main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+    <h3><%= t "menu.general" %></h3>
+      <ul class="nav side-menu">
+        <li>
+          <a><i class="fa fa-home"></i> <%= t "menu.home" %>
+            <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><%= link_to t("home.title"), root_path %></li>
+              <li><%= link_to t("help.title"), help_path %></li>
+              <li><%= link_to t("about.title"), "#" %></li>
+            </ul>
+        </li>
+
+        <li><a><i class="fa fa-bug"></i> <%= t "menu.admin" %>
+          <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li>
+              <a><%= t "menu.maganer_user" %>
+                <span class="fa fa-chevron-down"></span>
+              </a>
+              <ul class="nav child_menu">
+                <li><%= link_to t("menu.show_user"), "#" %></li>
+                <li><%= link_to t("menu.create_user"), "#" %></li>
+                <li><%= link_to t("menu.reset_password"), "#" %></li>
+              </ul>
+            </li>
+            <li>
+              <a><%= t "menu.manager_department" %>
+                <span class="fa fa-chevron-down"></span>
+              </a>
+              <ul class="nav child_menu">
+                <li><%= link_to t("menu.show_user"), "#" %></li>
+                <li><%= link_to t("menu.create_department"), "#" %></li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+        <li>
+          <a>
+            <i class="fa fa-sitemap"></i>
+            <%= t "menu.manager_request" %>
+            <span class="fa fa-chevron-down"></span>
+          </a>
+          <ul class="nav child_menu">
+            <li><%= link_to t("home.create_request"), "#" %></li>
+            <li><%= link_to t("help.update_request"), "#" %></li>
+            <li><%= link_to t("about.search_request"), "#" %></li>
+          </ul>
+        </li>
+    </div>
+  </div>
+  <div class="sidebar-footer hidden-small">
+      <%= link_to "#", data: {toggle: "tooltip", placement: "top"} do %>
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      <% end %>
+      <%= link_to "#", data: {toggle: "tooltip", placement: "top"} do %>
+        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+      <% end %>
+      <%= link_to "#", data: {toggle: "tooltip", placement: "top"} do %>
+        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to logout_path, method: :delete,
+            data: {toggle: "tooltip", placement: "top"} do %>
+          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        <% end %>
+      <% else %>
+        <%= link_to login_path,
+          data: {toggle: "tooltip", placement: "top"} do %>
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+        <% end %>
+      <% end %>
+  </div>
+</div>

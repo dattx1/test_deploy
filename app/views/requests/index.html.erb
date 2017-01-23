@@ -1,0 +1,43 @@
+<% provide :title, t("request.title") %>
+<h1> <%= t "request.title" %> </h1>
+<div class="row">
+  <%= form_tag("", id: "form-submit", method: :get) do %>
+    <div class="col-lg-1 text-center">
+      <%= t "request_manager.search.relative_to" %>
+    </div>
+    <div class="col-lg-3 text-center">
+      <%= select_tag( :relative_id, options_for_select(@staffs
+        .collect{ |staff| [staff.name, staff.id]},
+        params[:relative_id]), include_blank: Settings.all,
+        class: "form-control", onChange: "changeSearchForm()") %>
+    </div>
+    <div class="col-lg-1 text-center">
+      <%= t "request_manager.search.request_type" %>
+    </div>
+    <div class="col-lg-3 text-center">
+      <%= select_tag( :request_type_id, options_for_select(@request_types
+        .collect{ |request_type| [request_type.name, request_type.id]},
+        params[:request_type_id]), include_blank: Settings.all,
+        class: "form-control", onChange: "changeSearchForm()") %>
+    </div>
+    <div class="col-lg-1 text-center">
+      <%= t "request_manager.search.request_status" %>
+    </div>
+    <div class="col-lg-3 text-center">
+      <%= select_tag( :request_status_id, options_for_select(@request_statuses
+        .collect{ |request_status| [request_status.name, request_status.id]},
+        params[:request_status_id]), include_blank: Settings.all,
+        class: "form-control", onChange: "changeSearchForm()") %>
+    </div>
+  <% end %>
+</div>
+<div class="content">
+  <div class="row">
+    <%= link_to t("request_manager.title_add_new"),  requests_new_path,
+    class: "btn btn-primary", remote: true, data: {toggle: "modal",
+      target: "#dms-popup"} %>
+  </div>
+  <div id="grid-device", class="grid_table">
+    <%= render "grid_request" %>
+  </div>
+</div>

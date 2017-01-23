@@ -1,0 +1,22 @@
+<li>
+  <a id="show_form_login">
+    <span class="glyphicon glyphicon-log-in">
+      <%= t "header.signin" %>
+    </span>
+  </a>
+  <div class="row" id="form_login">
+    <div class="col-md-12 ">
+      <%= form_for :session, url: login_path do |f| %>
+        <%= f.email_field :email, class: "form-control",
+          placeholder: t("header.placeholder.password")  %>
+        <%= f.password_field :password, class: "form-control",
+          placeholder: t("header.placeholder.password") %>
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span><%= t "session.remember_account" %></span>
+        <% end %>
+        <%= f.submit t("session.login"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</li>
